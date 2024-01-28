@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* body {
+  font-family: "Poppins", sans-serif;
+} */
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@layer base {
+  .movebox {
+    @apply text-center rounded bg-blue-500 text-white p-2 my-2 text-[14px] cursor-pointer w-[200px] font-poppins flex justify-center items-center
+  }
+
+  .moveinput {
+    @apply text-black w-[60px] bg-white mx-2 p-1 py-0 text-center rounded-md font-poppins
+  }
+
+  .messagebox {
+    @apply text-center rounded bg-purple-500 text-white p-2 my-2 text-[14px] cursor-pointer w-[200px] font-poppins flex flex-col justify-center items-center space-y-2
+  }
+}
+
+.moveicon {
+  width: 18px !important;
+  height: 18px !important;
+}
