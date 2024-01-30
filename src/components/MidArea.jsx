@@ -10,7 +10,7 @@ import MidAreaElements from "./MidAreaElements";
 const MidArea = ({ add_list }) => {
   const dispatch = useDispatch();
   const [activeView, setactiveView] = useState("midarea");
-  const midAreaList = useSelector((state) => state.list.midAreaLists[0].comps);
+  const midAreaList = useSelector((state) => state.mid.midAreaLists[0].comps);
 
   function handleClick() {
     runAllEvents(midAreaList);
@@ -20,9 +20,7 @@ const MidArea = ({ add_list }) => {
           updateHistory({ type: element, val1: historyMap[element].val1 })
         );
       } catch (error) {
-        dispatch(
-          updateHistory({ type: element, val1: historyMap[element].val1 })
-        );
+        console.log("🚀 ~ midAreaList.forEach ~ error:", error);
       }
     });
   }

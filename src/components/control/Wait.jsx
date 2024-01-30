@@ -12,7 +12,7 @@ const Wait = ({ type, defaultval, compId, val1 }) => {
     try {
       dispatch(updateHistory({ type, val1: defaultval }));
     } catch (error) {
-      dispatch(updateHistory({ type, val1: defaultval }));
+      console.log("🚀 ~ waitHandler ~ error:", error);
     }
   }
 

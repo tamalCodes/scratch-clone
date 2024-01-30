@@ -17,12 +17,7 @@ const ThinkTimer = ({ type, defaultval }) => {
         })
       );
     } catch (error) {
-      dispatch(
-        updateHistory({
-          type,
-          val1: defaultval,
-        })
-      );
+      console.log("🚀 ~ displayMessage ~ error:", error);
     }
   };
 

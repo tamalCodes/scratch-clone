@@ -28,25 +28,21 @@ const motionSlice = createSlice({
     },
 
     rotateClockwise: (state, action) => {
-      try {
-        const el = document.getElementById(`${elname}`);
-        const currentAngle = state.spriteAngle;
-        const newAngle = currentAngle + parseInt(action.payload);
+      const el = document.getElementById(`${elname}`);
+      const currentAngle = state.spriteAngle;
+      const newAngle = currentAngle + parseInt(action.payload);
 
-        el.style.transform = `rotate(${newAngle}deg)`;
-        state.spriteAngle = newAngle;
-      } catch (error) {}
+      el.style.transform = `rotate(${newAngle}deg)`;
+      state.spriteAngle = newAngle;
     },
 
     rotateAntiClockwise: (state, action) => {
-      try {
-        const el = document.getElementById(`${elname}`);
-        const currentAngle = state.spriteAngle;
-        const newAngle = currentAngle - parseInt(action.payload);
+      const el = document.getElementById(`${elname}`);
+      const currentAngle = state.spriteAngle;
+      const newAngle = currentAngle - parseInt(action.payload);
 
-        el.style.transform = `rotate(${newAngle}deg)`;
-        state.spriteAngle = newAngle;
-      } catch (error) {}
+      el.style.transform = `rotate(${newAngle}deg)`;
+      state.spriteAngle = newAngle;
     },
 
     goToXY: (state, action) => {

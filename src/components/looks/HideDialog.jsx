@@ -15,11 +15,7 @@ const HideDialog = ({ type, defaultval, compId }) => {
         })
       );
     } catch (error) {
-      dispatch(
-        updateHistory({
-          type,
-        })
-      );
+      console.log("🚀 ~ displayMessage ~ error:", error);
     }
   };
 

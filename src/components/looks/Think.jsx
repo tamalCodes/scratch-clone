@@ -17,7 +17,7 @@ const ThinkMessage = ({ type, defaultval, compId, val1 }) => {
     try {
       dispatch(updateHistory({ type, val1: state.message }));
     } catch (error) {
-      dispatch(updateHistory({ type, val1: state.message }));
+      console.log("🚀 ~ messageHandler ~ error:", error);
     }
   };
 

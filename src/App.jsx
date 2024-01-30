@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import MidArea from "./components/MidArea";
 import PreviewArea from "./components/PreviewArea";
 import Sidebar from "./components/Sidebar";
+import { updateList } from "./redux/slice/midSlice";
 
 function App({ update_list }) {
-  const complist = useSelector((state) => state.list);
+  const dispatch = useDispatch();
+
   sessionStorage.setItem("spriteAngle", 0);
 
   function initializeSpriteSyles() {
@@ -21,34 +23,9 @@ function App({ update_list }) {
   }, []);
 
   const onDragEnd = (result) => {
-    let element = result.draggableId.split("-")[0];
-    const old_list = complist.midAreaLists;
-
-    let source_index = old_list.findIndex(
-      (x) => x.id === result.source.droppableId
-    );
-
-    if (source_index > -1) {
-      let comp_list = old_list[source_index].comps;
-      comp_list.splice(result.source.index, 1);
-      old_list[source_index].comps = comp_list;
-    }
-
-    try {
-      let dest_index = old_list.findIndex(
-        (x) => x.id === result.destination.droppableId
-      );
-
-      if (dest_index > -1) {
-        let dest_comp_list = old_list[dest_index].comps;
-        dest_comp_list.splice(result.destination.index, 0, `${element}`);
-
-        old_list[dest_index].comps = dest_comp_list;
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(updateList(result));
   };
+
   return (
     <div className="bg-blue-100 font-sans">
       <div className="h-screen  overflow-hidden flex flex-row pt-6">

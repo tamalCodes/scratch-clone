@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { fetchComponent } from "./fetchComponents";
 
 const MidAreaElements = () => {
-  const area_list = useSelector((state) => state.list);
+  const area_list = useSelector((state) => state.mid);
 
   return (
     <div className="flex justify-center items-center h-full w-full">

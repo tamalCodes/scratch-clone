@@ -11,7 +11,7 @@ const ResetSize = ({ type, defaultval, comp_id }) => {
     try {
       dispatch(updateHistory({ type }));
     } catch (error) {
-      dispatch(updateHistory({ type }));
+      console.log("🚀 ~ changeSizeHandler ~ error:", error);
     }
   };
 

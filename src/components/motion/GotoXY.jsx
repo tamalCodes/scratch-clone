@@ -17,7 +17,7 @@ const Goto_XY = ({ type, defaultval, compId, val1, val2 }) => {
     try {
       dispatch(updateHistory({ type, val1: state.x, val2: state.y }));
     } catch (error) {
-      dispatch(updateHistory({ type, val1: state.x, val2: state.y }));
+      console.log("🚀 ~ gotoHandler ~ error:", error);
     }
   }
 

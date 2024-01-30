@@ -14,7 +14,7 @@ const TurnClockWise = ({ type, defaultval, compId, val1 }) => {
     try {
       dispatch(updateHistory({ type, val1: val1 > 0 ? val1 : defaultval }));
     } catch (error) {
-      dispatch(updateHistory({ type, val1: val1 > 0 ? val1 : defaultval }));
+      console.log("🚀 ~ handleClockwise ~ error:", error);
     }
   }
 

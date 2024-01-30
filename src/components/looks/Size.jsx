@@ -8,10 +8,11 @@ const Size = ({ type, defaultval, comp_id }) => {
 
   const changeSizeHandler = () => {
     changeSize(type);
+    console.log("🚀 ~ changeSizeHandler ~ type:", type);
     try {
       dispatch(updateHistory({ type, val1: defaultval }));
     } catch (error) {
-      dispatch(updateHistory({ type, val1: defaultval }));
+      console.log("🚀 ~ changeSizeHandler ~ error:", error);
     }
   };
 
