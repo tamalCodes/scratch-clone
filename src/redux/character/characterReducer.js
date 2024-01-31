@@ -1,4 +1,4 @@
-import { SET_ACTIVE_CHARACTER, ADD_CHARACTER, SET_ANGLE } from "./actionTypes";
+import { ADD_CHARACTER, SET_ACTIVE_CHARACTER, SET_ANGLE } from "./actionTypes";
 
 const initialState = {
   characters: [{ id: "sprite0", angle: 0 }],
@@ -14,9 +14,9 @@ export const characterReducer = (state = initialState, action) => {
       };
 
     case ADD_CHARACTER:
-      let charactersArray = state.characters;
+      let charactersArray = state.sprites;
       charactersArray.push({
-        id: `sprite${state.characters.length}`,
+        id: `sprite${state.sprites.length}`,
         angle: 0,
       });
 
@@ -26,7 +26,7 @@ export const characterReducer = (state = initialState, action) => {
       };
 
     case SET_ANGLE:
-      let characters_Array = state.characters;
+      let characters_Array = state.sprites;
       let curr_character = characters_Array.find(
         (character) => character.id === state.active
       );

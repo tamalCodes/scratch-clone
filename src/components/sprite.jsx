@@ -1,11 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setActiveCharacter } from "../redux/slice/spriteSlice";
 import "./sprite.css";
 
 export default function CatSprite({ characId }) {
-  console.log("🚀 ~ CatSprite ~ characId:", characId);
+  const dispatch = useDispatch();
 
   return (
-    <div id={characId} className="character inline-block z-0">
+    <div
+      id={characId}
+      className="character inline-block z-0"
+      onClick={() => {
+        dispatch(setActiveCharacter(characId));
+      }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="95.17898101806641"

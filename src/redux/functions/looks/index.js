@@ -35,7 +35,7 @@ export const thinkMessageWithoutTimer = (time) => {
   const el = document.getElementById(`sprite0-message-box`);
   const el2 = document.getElementById(`sprite0-message-box1`);
 
-  if (state.show_msg && state.character_id === "sprite0") {
+  if (state.show_msg && state.sprite_id === "sprite0") {
     setState({ ...state, show_msg: false });
     el.style.display = "none";
     el2.style.display = "none";

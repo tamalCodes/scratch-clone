@@ -5,6 +5,7 @@ import MidArea from "./components/MidArea";
 import PreviewArea from "./components/PreviewArea";
 import Sidebar from "./components/Sidebar";
 import { updateList } from "./redux/slice/midSlice";
+import { store } from "./store";
 
 function App({ update_list }) {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ function App({ update_list }) {
   sessionStorage.setItem("spriteAngle", 0);
 
   function initializeSpriteSyles() {
-    const el = document.getElementById(`sprite0-div`);
+    const el = document.getElementById(`${store.getState().sprite.active}-div`);
     el.style.position = "relative";
     el.style.left = "0px";
     el.style.top = "0px";

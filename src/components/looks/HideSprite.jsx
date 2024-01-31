@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const HideSprite = ({ comp_id }) => {
-  const character = useSelector((state) => state.character);
+  const character = useSelector((state) => state.sprite);
 
   const handler = () => {
     const el = document.getElementById(character.active);

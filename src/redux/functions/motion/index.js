@@ -1,11 +1,19 @@
+import { store } from "../../../store";
+
 const elname = "sprite0";
 
-export const MoveStepsX = (type) => {
-  const el = document.getElementById(`sprite0-div`);
-  const currentLeft = el.offsetLeft;
-  el.style.position !== "relative" && (el.style.position = "relative");
+console.log(store.getState().sprite.active);
 
+export const MoveStepsX = (type) => {
+  // console.log("🚀 :", store.getState().sprite);
+  // console.log("🚀 :", store.getState().sprite.active);
+  // console.log("🚀 :", `${store.getState().sprite.active}-div`);
+  const el = document.getElementById(`${store.getState().sprite.active}-div`);
+  const currentLeft = el.offsetLeft;
+
+  el.style.position !== "relative" && (el.style.position = "relative");
   let steps = 0;
+
   switch (type) {
     case "MOVEX_TEN":
       steps = 10;
@@ -24,7 +32,7 @@ export const MoveStepsX = (type) => {
 };
 
 export const MoveStepsY = (type) => {
-  const el = document.getElementById(`sprite0-div`);
+  const el = document.getElementById(`${store.getState().sprite.active}-div`);
   const top = el.offsetTop;
   el.style.position !== "relative" && (el.style.position = "relative");
 
@@ -47,7 +55,7 @@ export const MoveStepsY = (type) => {
 };
 
 export const RotateClockwise = (type) => {
-  const el = document.getElementById(`sprite0`);
+  const el = document.getElementById(`${store.getState().sprite.active}`);
   const currentAngle = sessionStorage.getItem("spriteAngle");
 
   let angle = 0;
@@ -72,7 +80,7 @@ export const RotateClockwise = (type) => {
 };
 
 export const RotateAntiClockwise = (type) => {
-  const el = document.getElementById(`sprite0`);
+  const el = document.getElementById(`${store.getState().sprite.active}`);
   const currentAngle = sessionStorage.getItem("spriteAngle");
 
   let angle = 0;
@@ -97,7 +105,7 @@ export const RotateAntiClockwise = (type) => {
 };
 
 export const GotoXY = (x, y) => {
-  const el = document.getElementById(`sprite0-div`);
+  const el = document.getElementById(`${store.getState().sprite.active}-div`);
   el.style.position !== "relative" && (el.style.position = "relative");
   el.style.left = x + "px";
   el.style.top = y + "px";

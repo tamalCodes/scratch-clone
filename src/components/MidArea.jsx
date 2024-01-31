@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import runAllEvents from "../redux/functions";
 import historyMap from "../redux/functions/historyMap";
 import { updateHistory } from "../redux/slice/historySlice";
+import { addCharacter } from "../redux/slice/spriteSlice";
 import HistoryAreaElements from "./HistoryAreaElements";
 import MidAreaElements from "./MidAreaElements";
 
@@ -62,6 +63,15 @@ const MidArea = ({ add_list }) => {
           }}
         >
           Run all
+        </h1>
+
+        <h1
+          className={`font-poppins text-2xl font-semibold cursor-pointer flex items-center gap-3 border-4 border-blue-500 p-2 rounded-md $`}
+          onClick={() => {
+            dispatch(addCharacter());
+          }}
+        >
+          Add sprite
         </h1>
       </div>
 

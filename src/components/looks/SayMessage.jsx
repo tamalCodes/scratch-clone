@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 const SayMessage = ({ comp_id }) => {
-  const character = useSelector((state) => state.character);
+  const character = useSelector((state) => state.sprite);
 
   const [state, setState] = useState({
     show_msg: false,
@@ -14,7 +14,7 @@ const SayMessage = ({ comp_id }) => {
     const el = document.getElementById(`${character.active}-message-box`);
     const el2 = document.getElementById(`${character.active}-message-box1`);
 
-    if (state.show_msg && state.character_id === character.active) {
+    if (state.show_msg && state.sprite_id === character.active) {
       setState({ ...state, show_msg: false });
       el.style.display = "none";
       return;
@@ -58,7 +58,7 @@ const SayMessage = ({ comp_id }) => {
 
 // function mapStateToProps(state) {
 //   return {
-//     character: state.character,
+//     character: state.sprite,
 //   };
 // }
 

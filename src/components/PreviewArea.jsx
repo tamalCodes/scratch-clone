@@ -37,7 +37,7 @@ function PreviewArea() {
     document.onmousemove = null;
   }
 
-  const character = useSelector((state) => state.character);
+  const character = useSelector((state) => state.sprite);
 
   return (
     <div
@@ -71,17 +71,5 @@ function PreviewArea() {
     </div>
   );
 }
-
-// function mapStateToProps(state) {
-//   return {
-//     character: state.character,
-//   };
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     add_character: () => dispatch(addCharacter()),
-//   };
-// };
 
 export default PreviewArea;

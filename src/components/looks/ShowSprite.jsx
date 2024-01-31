@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Show = ({ comp_id }) => {
-  const character = useSelector((state) => state.character);
+  const character = useSelector((state) => state.sprite);
 
   const handleDisplay = () => {
     const el = document.getElementById(character.active);
@@ -25,7 +25,7 @@ const Show = ({ comp_id }) => {
 // mapping state to component
 // const mapStateToProps = (state) => {
 //   return {
-//     character: state.character,
+//     character: state.sprite,
 //   };
 // };
 
