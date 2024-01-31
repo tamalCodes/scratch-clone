@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   characters: [{ id: "sprite0", angle: 0 }],
   active: "sprite0",
+  thisSprite: false,
 };
 
 const spriteSlice = createSlice({
@@ -28,8 +29,22 @@ const spriteSlice = createSlice({
         el.style.top = "0px";
       }, 100);
     },
+
+    toggleThisSprite: (state) => {
+      state.thisSprite = !state.thisSprite;
+    },
+
+    updateAngle: (state, action) => {
+      state.characters.find((obj) => obj.id === state.active).angle =
+        action.payload;
+    },
   },
 });
 
-export const { addCharacter, setActiveCharacter } = spriteSlice.actions;
+export const {
+  addCharacter,
+  setActiveCharacter,
+  toggleThisSprite,
+  updateAngle,
+} = spriteSlice.actions;
 export default spriteSlice.reducer;

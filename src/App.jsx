@@ -10,8 +10,6 @@ import { store } from "./store";
 function App({ update_list }) {
   const dispatch = useDispatch();
 
-  sessionStorage.setItem("spriteAngle", 0);
-
   function initializeSpriteSyles() {
     const el = document.getElementById(`${store.getState().sprite.active}-div`);
     el.style.position = "relative";

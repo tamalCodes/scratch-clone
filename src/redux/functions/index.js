@@ -7,8 +7,6 @@ const executeMotionFunctionWithDelay = (motionFunction, event, delay) => {
 };
 
 const runEvents = async (midAreaList, delayBetweenEvents = 500) => {
-  console.log("🚀 ~ runEvents ~ midAreaList:", midAreaList);
-
   for (let i = 0; i < midAreaList.length; i++) {
     const event = midAreaList[i];
 

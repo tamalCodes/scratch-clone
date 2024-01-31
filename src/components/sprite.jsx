@@ -1,10 +1,15 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import runAllEvents from "../redux/functions";
+import { updateHistory } from "../redux/slice/historySlice";
 import { setActiveCharacter } from "../redux/slice/spriteSlice";
 import "./sprite.css";
 
 export default function CatSprite({ characId }) {
   const dispatch = useDispatch();
+  const thisSprite = useSelector((state) => state.sprite.thisSprite);
+  const midAreaList = useSelector((state) => state.mid.midAreaLists);
+  const activeStackId = useSelector((state) => state.mid.active);
 
   return (
     <div
@@ -12,6 +17,24 @@ export default function CatSprite({ characId }) {
       className="character inline-block z-0"
       onClick={() => {
         dispatch(setActiveCharacter(characId));
+
+        if (thisSprite) {
+          const comps = midAreaList.find(
+            (obj) => obj.id === activeStackId
+          ).comps;
+
+          runAllEvents(comps);
+
+          comps.forEach((element) => {
+            try {
+              dispatch(
+                updateHistory({ type: element, val1: historyMap[element].val1 })
+              );
+            } catch (error) {
+              console.log("🚀 ~ midAreaList.forEach ~ error:", error);
+            }
+          });
+        }
       }}
     >
       <svg

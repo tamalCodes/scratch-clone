@@ -1,4 +1,5 @@
 import { store } from "../../../store";
+import { updateAngle } from "../../slice/spriteSlice";
 
 const elname = "sprite0";
 
@@ -56,7 +57,11 @@ export const MoveStepsY = (type) => {
 
 export const RotateClockwise = (type) => {
   const el = document.getElementById(`${store.getState().sprite.active}`);
-  const currentAngle = sessionStorage.getItem("spriteAngle");
+  const currentAngle = store
+    .getState()
+    .sprite.characters.find(
+      (obj) => obj.id === store.getState().sprite.active
+    ).angle;
 
   let angle = 0;
   switch (type) {
@@ -76,12 +81,16 @@ export const RotateClockwise = (type) => {
   const newAngle = parseInt(currentAngle) + parseInt(angle);
 
   el.style.transform = `rotate(${newAngle}deg)`;
-  sessionStorage.setItem("spriteAngle", newAngle);
+  store.dispatch(updateAngle(newAngle));
 };
 
 export const RotateAntiClockwise = (type) => {
   const el = document.getElementById(`${store.getState().sprite.active}`);
-  const currentAngle = sessionStorage.getItem("spriteAngle");
+  const currentAngle = store
+    .getState()
+    .sprite.characters.find(
+      (obj) => obj.id === store.getState().sprite.active
+    ).angle;
 
   let angle = 0;
   switch (type) {
@@ -101,7 +110,7 @@ export const RotateAntiClockwise = (type) => {
   const newAngle = parseInt(currentAngle) - parseInt(angle);
 
   el.style.transform = `rotate(${newAngle}deg)`;
-  sessionStorage.setItem("spriteAngle", newAngle);
+  store.dispatch(updateAngle(newAngle));
 };
 
 export const GotoXY = (x, y) => {
