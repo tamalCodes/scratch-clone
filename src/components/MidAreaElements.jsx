@@ -1,23 +1,34 @@
 import React from "react";
 import { Draggable, Droppable } from "react-beautiful-dnd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveList } from "../redux/slice/midSlice";
+import { store } from "../store";
 import { fetchComponent } from "./fetchComponents";
 
 const MidAreaElements = () => {
   const area_list = useSelector((state) => state.mid);
 
+  const dispatch = useDispatch();
+
   return (
-    <div className="flex justify-center items-center h-full w-full">
+    <div className="flex flex-wrap gap-3 justify-center items-center h-full w-full">
       {area_list.midAreaLists.map((l) => {
-        console.log(l);
         return (
           <Droppable droppableId={l.id} type="COMPONENTS" key={l.id}>
             {(provided) => {
               return (
                 <ul
-                  className={`${l.id} w-[250px] min-h-[50px] flex flex-col bg-slate-100 rounded-md`}
+                  className={`${
+                    l.id
+                  } w-[250px] min-h-[50px] flex flex-col bg-slate-100 rounded-md ${
+                    store.getState().mid.active === l.id &&
+                    "border-2 border-blue-500"
+                  }`}
                   {...provided.droppableProps}
                   ref={provided.innerRef}
+                  onClick={() => {
+                    dispatch(setActiveList(l.id));
+                  }}
                 >
                   {l.comps &&
                     l.comps.map((x, i) => {

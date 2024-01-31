@@ -7,6 +7,7 @@ const initialState = {
       comps: [],
     },
   ],
+  active: "midAreaList-0",
 };
 
 const midSlice = createSlice({
@@ -14,7 +15,6 @@ const midSlice = createSlice({
   initialState,
   reducers: {
     updateList: (state, action) => {
-      const old_list = state.midAreaLists;
       let element = action.payload.draggableId.split("-")[0];
 
       let source_index = state.midAreaLists.findIndex(
@@ -34,16 +34,33 @@ const midSlice = createSlice({
 
         if (dest_index > -1) {
           let dest_comp_list = state.midAreaLists[dest_index].comps;
-          dest_comp_list.splice(action.payload.destination.index, 0, `${element}`);
+          dest_comp_list.splice(
+            action.payload.destination.index,
+            0,
+            `${element}`
+          );
 
           state.midAreaLists[dest_index].comps = dest_comp_list;
         }
       } catch (error) {
-        console.log("🚀 ~ error:", error)
+        console.log("🚀 ~ error:", error);
       }
+    },
+
+    addList: (state, action) => {
+      var newId = state.midAreaLists.length;
+
+      state.midAreaLists.push({
+        id: `midAreaList-${newId}`,
+        comps: [],
+      });
+    },
+
+    setActiveList: (state, action) => {
+      state.active = action.payload;
     },
   },
 });
 
-export const { updateList } = midSlice.actions;
+export const { updateList, addList, setActiveList } = midSlice.actions;
 export default midSlice.reducer;
