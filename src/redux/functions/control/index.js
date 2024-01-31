@@ -1,3 +1,5 @@
+import { store } from "../../../store";
+
 export async function waitEvent(type) {
   let time = 0;
   switch (type) {
@@ -15,22 +17,22 @@ export async function waitEvent(type) {
 }
 
 export const hideSprite = () => {
-  const el = document.getElementById("sprite0");
+  const el = document.getElementById(`${store.getState().sprite.active}`);
   el.style.display = "none";
 };
 
 export const showSprite = () => {
-  const el = document.getElementById("sprite0");
+  const el = document.getElementById(`${store.getState().sprite.active}`);
   el.style.display = "inline-block";
 };
 
 export const resetSize = () => {
-  const el = document.getElementById("sprite0");
+  const el = document.getElementById(`${store.getState().sprite.active}`);
   el.style.transform = "scale(1)";
 };
 
 export const changeSize = (type) => {
-  const el = document.getElementById("sprite0");
+  const el = document.getElementById(`${store.getState().sprite.active}`);
   switch (type) {
     case "SIZE_HALF":
       el.style.transform = "scale(0.5)";

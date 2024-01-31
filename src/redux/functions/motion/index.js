@@ -1,14 +1,7 @@
 import { store } from "../../../store";
 import { updateAngle } from "../../slice/spriteSlice";
 
-const elname = "sprite0";
-
-console.log(store.getState().sprite.active);
-
 export const MoveStepsX = (type) => {
-  // console.log("🚀 :", store.getState().sprite);
-  // console.log("🚀 :", store.getState().sprite.active);
-  // console.log("🚀 :", `${store.getState().sprite.active}-div`);
   const el = document.getElementById(`${store.getState().sprite.active}-div`);
   const currentLeft = el.offsetLeft;
 

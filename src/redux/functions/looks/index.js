@@ -1,8 +1,12 @@
-const elname = "sprite0";
+import { store } from "../../../store";
 
 export const sayMessageWithTimer = (type) => {
-  const el = document.getElementById(`sprite0-message-box`);
-  const el2 = document.getElementById(`sprite0-message-box1`);
+  const el = document.getElementById(
+    `${store.getState().sprite.active}-message-box`
+  );
+  const el2 = document.getElementById(
+    `${store.getState().sprite.active}-message-box1`
+  );
 
   el2.style.display = "none";
 
@@ -32,10 +36,17 @@ export const sayMessageWithTimer = (type) => {
 };
 
 export const thinkMessageWithoutTimer = (time) => {
-  const el = document.getElementById(`sprite0-message-box`);
-  const el2 = document.getElementById(`sprite0-message-box1`);
+  const el = document.getElementById(
+    `${store.getState().sprite.active}-message-box`
+  );
+  const el2 = document.getElementById(
+    `${store.getState().sprite.active}-message-box1`
+  );
 
-  if (state.show_msg && state.sprite_id === "sprite0") {
+  if (
+    state.show_msg &&
+    state.sprite_id === "${store.getState().sprite.active}"
+  ) {
     setState({ ...state, show_msg: false });
     el.style.display = "none";
     el2.style.display = "none";
@@ -53,8 +64,12 @@ export const thinkMessageWithoutTimer = (time) => {
 };
 
 export const thinkMessageWithTimer = (type) => {
-  const el = document.getElementById(`sprite0-message-box`);
-  const el2 = document.getElementById(`sprite0-message-box1`);
+  const el = document.getElementById(
+    `${store.getState().sprite.active}-message-box`
+  );
+  const el2 = document.getElementById(
+    `${store.getState().sprite.active}-message-box1`
+  );
 
   el.style.display = "inline-block";
   el.style.position = "relative";
@@ -86,8 +101,12 @@ export const thinkMessageWithTimer = (type) => {
 
 export const hideMessage = () => {
   window.clearTimeout();
-  const el = document.getElementById(`sprite0-message-box`);
-  const el2 = document.getElementById(`sprite0-message-box1`);
+  const el = document.getElementById(
+    `${store.getState().sprite.active}-message-box`
+  );
+  const el2 = document.getElementById(
+    `${store.getState().sprite.active}-message-box1`
+  );
   el.style.display = "none";
   el2.style.display = "none";
 };

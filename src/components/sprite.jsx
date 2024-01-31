@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import runAllEvents from "../redux/functions";
+import historyMap from "../redux/functions/historyMap";
 import { updateHistory } from "../redux/slice/historySlice";
 import { setActiveCharacter } from "../redux/slice/spriteSlice";
 import "./sprite.css";
@@ -10,11 +11,14 @@ export default function CatSprite({ characId }) {
   const thisSprite = useSelector((state) => state.sprite.thisSprite);
   const midAreaList = useSelector((state) => state.mid.midAreaLists);
   const activeStackId = useSelector((state) => state.mid.active);
+  const activeSpriteId = useSelector((state) => state.sprite.active);
 
   return (
     <div
       id={characId}
-      className="character inline-block z-0"
+      className={`character inline-block z-0 ${
+        activeSpriteId === characId ? "opacity-1" : "opacity-70"
+      } `}
       onClick={() => {
         dispatch(setActiveCharacter(characId));
 
