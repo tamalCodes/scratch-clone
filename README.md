@@ -36,7 +36,7 @@
 
 - React
 - Redux
-- React DnD
+- React DnD (outdated but still used for the purpose of this project)
 - React Redux
 - React Redux Toolkit
 - Tailwind CSS
